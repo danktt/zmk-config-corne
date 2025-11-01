@@ -10,12 +10,13 @@
     };
 
     zmk,underglow {
-        compatible = "zmk,underglow";
-        label = "ZMK Underglow";
-        chain-length = <12>;
-        color-order = "GRB";
-        spi-max-frequency = <4000000>;
-        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-        status = "okay";
-    };
+      compatible = "zmk,underglow";
+      label = "ZMK Underglow";
+      chain-length = <12>;
+      color-order = "GRB";
+      spi-max-frequency = <4000000>;
+      data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+      status = "okay";
+      brightness = <128>;
+};
 };
