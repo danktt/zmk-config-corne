@@ -4,6 +4,18 @@
         label = "WS2812";
         chain-length = <12>;
         spi-max-frequency = <4000000>;
-        data-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>; /* exemplo: outro pino no lado direito */
+        data-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;  /* confirme o pino real */
+        color-order = "GRB";
+        status = "okay";
+    };
+
+    zmk,underglow {
+        compatible = "zmk,underglow";
+        label = "ZMK Underglow";
+        chain-length = <12>;
+        color-order = "GRB";
+        spi-max-frequency = <4000000>;
+        data-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+        status = "okay";
     };
 };

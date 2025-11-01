@@ -2,20 +2,20 @@
     ws2812: ws2812 {
         compatible = "worldsemi,ws2812";
         label = "WS2812";
-        chain-length = <12>;         /* número de LEDs — ajuste se tiver mais */
+        chain-length = <12>;         /* ajuste para o número real de LEDs */
         spi-max-frequency = <4000000>;
-        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  /* P0.06 -> ajuste se usar outro pino */
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  /* P0.06 -> confirme no seu PCB */
+        color-order = "GRB";
+        status = "okay";
     };
-};
 
-&led_strip {
-    status = "okay";
-};
-
-&zmk_rgb_underglow {
-    label = "RGB Underglow";
-    chain-length = <12>;
-    spi-max-frequency = <4000000>;
-    color-order = "GRB";
-    data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+    zmk,underglow {
+        compatible = "zmk,underglow";
+        label = "ZMK Underglow";
+        chain-length = <12>;
+        color-order = "GRB";
+        spi-max-frequency = <4000000>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        status = "okay";
+    };
 };
