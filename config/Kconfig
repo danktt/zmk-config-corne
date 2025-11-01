@@ -1,6 +1,0 @@
-
-config BOARD_CORNE_LEFT
-    bool
-
-config BOARD_CORNE_RIGHT
-    bool
