@@ -1,0 +1,51 @@
+/ {
+    compatible = "zmk,keyboard";
+
+    /* --- RGB underglow --- */
+    ws2812: ws2812 {
+        compatible = "worldsemi,ws2812";
+        label = "WS2812";
+        chain-length = <27>;              /* total de LEDs */
+        spi-max-frequency = <4000000>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;  /* pino usado pelo Corne left */
+        color-order = "GRB";
+        status = "okay";
+    };
+
+    zmk,underglow {
+        compatible = "zmk,underglow";
+        label = "ZMK Underglow";
+        chain-length = <27>;
+        color-order = "GRB";
+        spi-max-frequency = <4000000>;
+        data-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        status = "okay";
+    };
+
+    /* --- Display OLED (SSD1306 128x32) --- */
+    &i2c0 {
+        status = "okay";
+        sda-pin = <26>;
+        scl-pin = <27>;
+    };
+
+    ssd1306: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        label = "SSD1306";
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        scan-direction = <0>;
+        com-invdir = <1>;
+        prechargep = <0x22>;
+        com-sequential = <1>;
+        vcomh = <0x20>;
+        vdd = <0>;
+        reset-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+        status = "okay";
+    };
+};
